@@ -12,6 +12,7 @@ import { DetailsSectionComponent } from './components/details-section/details-se
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageHistoryComponent } from './components/message-history/message-history.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LeftSideBarComponent,
     SendMessageComponent,
     AddContactComponent,
-    DetailsSectionComponent
+    DetailsSectionComponent,
+    MessageHistoryComponent
   ],
   imports: [
     BrowserModule,

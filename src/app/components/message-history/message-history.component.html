@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4 class="modal-title">Message History</h4>
+    <button type="button" class="close" aria-label="Close"
+        (click)="modalService.dismissAll()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p><b>Steve Jobs</b></p>
+    <div class="row">
+        <div class="col-sm-5">
+            <p><b>Sent Messages</b></p>
+            <div *ngFor="let n of [1,2,3,4]" class="message-div">
+                <p>To :Manish</p>
+                <p>Hello , How are you?</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <p><b>Recieved Messages</b></p>
+            <div class="col-sm-6">
+                <div *ngFor="let n of [1,2,3,4]" class="message-div">
+                    <p>From :</p>
+                    <p>Hello , How are you?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

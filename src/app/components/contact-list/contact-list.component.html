@@ -34,7 +34,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" (click)="addContactPopup()">
+                            <a class="nav-link" (click)="messageHistory()">
                                 <i class="fa fa-envelope-o"></i>
                                 Message history</a>
 
@@ -142,10 +142,16 @@
 
 
 <ng-template #sendMessageContent let-modal>
-    <app-send-message [sendMessageTo]="sendMessageTo"></app-send-message>
+    <app-send-message [sendMessageTo]="sendMessageTo"
+        (addNewMessage)="addNewMessage($event)"></app-send-message>
 </ng-template>
 <ng-template #addContactContent let-modal>
     <app-add-contact [editDetails]="editDetails"
         (updateContact)="updateContact($event)"
         (addContactEmit)="addContact($event)"></app-add-contact>
+</ng-template>
+
+<ng-template #messageHistoryContent let-modal>
+    <app-message-history>
+    </app-message-history>
 </ng-template>

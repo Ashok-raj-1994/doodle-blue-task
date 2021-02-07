@@ -10,8 +10,11 @@ declare var self: any;
 export class ContactListComponent implements OnInit {
 
   // contactArray = [];
+
+  messageHistoryArray = [];
   @ViewChild('sendMessageContent') sendMessageContent: ElementRef;
   @ViewChild('addContactContent') addContactContent: ElementRef;
+  @ViewChild('messageHistoryContent') messageHistoryContent: ElementRef;
 
 
   constructor(private modalService: NgbModal) {
@@ -34,6 +37,10 @@ export class ContactListComponent implements OnInit {
     this.contactArray[this.editIndex] = contact;
   }
 
+  addNewMessage(message) {
+    let data = { ...message, ...{ from: this.selectedUser } }
+    this.messageHistoryArray.push(data);
+  }
 
   getProfileImage(name) {
 
@@ -49,6 +56,8 @@ export class ContactListComponent implements OnInit {
 
   }
 
+
+
   sendMessage(details) {
     this.sendMessageTo = details;
     this.modalService.open(this.sendMessageContent);
@@ -63,6 +72,10 @@ export class ContactListComponent implements OnInit {
     this.editDetails = details;
     this.editIndex = i;
     this.modalService.open(this.addContactContent);
+  }
+
+  messageHistory() {
+    this.modalService.open(this.messageHistoryContent, { size: 'lg' });
   }
 
   getDetails(details) {

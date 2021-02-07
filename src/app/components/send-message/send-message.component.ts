@@ -8,12 +8,20 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SendMessageComponent implements OnInit {
 
+  message: string;
   @Input() sendMessageTo;
 
   constructor(public activeModal: NgbActiveModal,
     public modalService: NgbModal) { }
   // constructor() { }
   ngOnInit(): void {
+  }
+
+  send() {
+    let data = {
+      message: this.message,
+      to: this.sendMessageTo.name
+    }
   }
 
 }

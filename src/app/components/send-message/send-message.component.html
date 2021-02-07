@@ -7,10 +7,9 @@
 </div>
 <div class="modal-body" *ngIf="sendMessageTo">
     <p>To:<b> {{sendMessageTo.name}}</b></p>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-
+    <textarea [(ngModel)]="message" class="form-control" rows="5" id="comment"></textarea>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark"
-        (click)="modalService.dismissAll()">Send</button>
+        (click)="send()">Send</button>
 </div>
