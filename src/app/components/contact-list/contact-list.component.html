@@ -1,0 +1,151 @@
+
+<div style="display: flex;">
+
+    <div class="side-nav-bar">
+        <div> <i class="fa fa-home"></i> </div>
+        <div> <i class="fa fa-user-o"></i> </div>
+        <div> <i class="fa fa-commenting-o"></i> </div>
+        <div> <i class="fa fa-address-card-o"></i> </div>
+        <div> <i class="fa fa-calendar"></i> </div>
+        <div> <i class="fa fa-copyright"></i> </div>
+    </div>
+    <div style="width: 100%;">
+        <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse justify-content-end"
+                    id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="addContactPopup()">
+                                <i class="fa fa-plus"></i>
+                                Add</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" href="#">
+                                <i class="fa fa-envelope-o"></i>
+                                Mark Henry</a> -->
+                            <ng-select [items]="contactArray"
+                                bindLabel="name"
+                                bindValue="name"
+                                [(ngModel)]="selectedUser">
+                            </ng-select>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="addContactPopup()">
+                                <i class="fa fa-envelope-o"></i>
+                                Message history</a>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </nav>
+
+
+
+        <div class="container">
+
+            <div class="row search-section">
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="Search"
+                        />
+                </div>
+                <div class="col-sm-3">
+                    <button (click)="addContactPopup()" type="button"
+                        class="btn">
+                        <i class="fa fa-plus"></i>
+                        Add Contact</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-7">
+
+
+                    <table class="table borderless">
+                        <thead>
+                            <tr>
+                                <th> <i (click)="addContactPopup()" class="fa
+                                        fa-plus"></i>
+                                </th>
+                                <th class="text-center">Basic Info</th>
+                                <th>Company</th>
+                                <th class="action-header">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let contact of contactArray;let i=index"
+                                [hidden]="selectedUser === contact.name">
+                                <td class="middle text-right">
+                                    <input type="checkbox"
+                                        class="form-check-input"
+                                        />
+                                </td>
+                                <td class="middle hand-pointer"
+                                    (click)="getDetails(contact)">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="javascript:void(0);">
+
+                                                <!-- <img class="media-object"
+                                                    [src]="getProfileImage(contact.name)"
+                                                    alt="..."> -->
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <address>
+                                                <strong>{{contact.name}}</strong><br>
+                                                contact2@sample.com
+                                            </address>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="middle">
+                                    {{contact.company}}
+                                </td>
+                                <td class="middle action-section">
+                                    <!-- <i class="fa fa-pencil"></i> <i class="fa
+                                        fa-envelope-o"></i> -->
+                                    <span (click)="editContact(contact,i)"
+                                        class="badge badge-secondary">
+                                        <i class="fa fa-pencil"></i>
+                                    </span>
+                                    <span (click)="sendMessage(contact)"
+                                        class="badge
+                                        badge-secondary">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="col-sm-5">
+                    <app-details-section [userDetails]="userDetails"></app-details-section>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #sendMessageContent let-modal>
+    <app-send-message [sendMessageTo]="sendMessageTo"></app-send-message>
+</ng-template>
+<ng-template #addContactContent let-modal>
+    <app-add-contact [editDetails]="editDetails"
+        (updateContact)="updateContact($event)"
+        (addContactEmit)="addContact($event)"></app-add-contact>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title">Send Message</h4>
+    <button type="button" class="close" aria-label="Close"
+        (click)="modalService.dismissAll()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" *ngIf="sendMessageTo">
+    <p>To:<b> {{sendMessageTo.name}}</b></p>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"
+        (click)="modalService.dismissAll()">Send</button>
+</div>
