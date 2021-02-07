@@ -115,12 +115,28 @@ ul.pagination {
     ul {
         list-style-type: none;
     }
+    .top-menu {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+    }
     .fa {
         color: white;
+    }
+    .fa:not(.top-menu) {
         margin-top: 3rem;
     }
+    // .fa {
+    //     color: white;
+    //     margin-top: 3rem;
+    // }
 }
 
 .fa {
     cursor: pointer;
+}
+
+@media all and (max-width: 577px) {
+    .side-nav-bar {
+        padding: 10px;
+    }
 }

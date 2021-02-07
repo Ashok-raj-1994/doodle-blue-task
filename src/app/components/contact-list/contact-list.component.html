@@ -2,6 +2,8 @@
 <div style="display: flex;">
 
     <div class="side-nav-bar">
+        <div> <i class="top-menu fa fa-align-right"></i> </div>
+
         <div> <i class="fa fa-home"></i> </div>
         <div> <i class="fa fa-user-o"></i> </div>
         <div> <i class="fa fa-commenting-o"></i> </div>
@@ -13,11 +15,16 @@
         <nav class="navbar navbar-expand-sm bg-light justify-content-center">
             <div class="container-fluid">
 
-                <div class="collapse navbar-collapse justify-content-end"
+                <a class="nav-link hand-pointer">
+                    <i class="fa fa-search"></i>
+                </a>
+                <div class="navbar-collapse
+                    justify-content-end"
                     id="navbarCollapse">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" (click)="addContactPopup()">
+                            <a class="nav-link hand-pointer"
+                                (click)="addContactPopup()">
                                 <i class="fa fa-plus"></i>
                                 Add</a>
 
@@ -34,7 +41,8 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" (click)="messageHistory()">
+                            <a class="nav-link hand-pointer"
+                                (click)="messageHistory()">
                                 <i class="fa fa-envelope-o"></i>
                                 Message history</a>
 
@@ -93,15 +101,15 @@
                                         <div class="media-left">
                                             <a href="javascript:void(0);">
 
-                                                <!-- <img class="media-object"
-                                                    [src]="getProfileImage(contact.name)"
-                                                    alt="..."> -->
+                                                <img class="media-object"
+                                                    [src]="contact.image"
+                                                    alt="...">
                                             </a>
                                         </div>
                                         <div class="media-body">
                                             <address>
                                                 <strong>{{contact.name}}</strong><br>
-                                                contact2@sample.com
+                                                {{contact.email}}
                                             </address>
                                         </div>
                                     </div>
@@ -152,6 +160,7 @@
 </ng-template>
 
 <ng-template #messageHistoryContent let-modal>
-    <app-message-history>
+    <app-message-history [messageHistoryArray]="messageHistoryArray"
+        [selectedUser]="selectedUser">
     </app-message-history>
 </ng-template>

@@ -1,7 +1,7 @@
 <div class="details-section text-center" *ngIf="userDetails">
     <div>
         <img class="detail-image"
-            src="https://via.placeholder.com/150/f0d54f/FFFFFF?text=SM"
+            [src]="getProfileImage(userDetails.name)"
             alt="...">
         <h3>{{userDetails.name}}</h3>
         <p>General manager of company</p>
@@ -30,6 +30,14 @@
             </div>
             <div class="col-sm-7">
                 <b> {{userDetails.phone}}</b>
+            </div>
+        </div>
+        <div class="row detail-single">
+            <div class="col-sm-5">
+                Company :
+            </div>
+            <div class="col-sm-7">
+                <b> {{userDetails.company}}</b>
             </div>
         </div>
     </div>

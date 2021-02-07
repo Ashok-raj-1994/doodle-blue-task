@@ -10,17 +10,18 @@
     <div class="row">
         <div class="col-sm-5">
             <p><b>Sent Messages</b></p>
-            <div *ngFor="let n of [1,2,3,4]" class="message-div">
-                <p>To :Manish</p>
-                <p>Hello , How are you?</p>
+            <div *ngFor="let message of sentMessage" class="message-div">
+                <p *ngIf="message">To :{{message.to}}</p>
+                <p *ngIf="message">{{message.message}}</p>
             </div>
         </div>
         <div class="col-sm-6">
             <p><b>Recieved Messages</b></p>
             <div class="col-sm-6">
-                <div *ngFor="let n of [1,2,3,4]" class="message-div">
-                    <p>From :</p>
-                    <p>Hello , How are you?</p>
+                <div *ngFor="let message of recievedMessage"
+                    class="message-div">
+                    <p *ngIf="message">From : {{message.from}}</p>
+                    <p *ngIf="message">{{message.message}}</p>
                 </div>
             </div>
         </div>
